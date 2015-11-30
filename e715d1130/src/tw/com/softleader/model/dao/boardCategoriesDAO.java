@@ -31,13 +31,12 @@ public class boardCategoriesDAO {
 //			System.out.println(result);
 			
 			//insert(?)
-//			boardCategories bean = new boardCategories();
-//			bean.setCategoryId(6);
-//			bean.setDateCreated(new java.util.Date());
-//			bean.setName("test");
-//			int result = dao.insert(bean);
-//			System.out.println(result);
-//			
+			boardCategories bean = new boardCategories();
+			bean.setDateCreated(new java.util.Date());
+			bean.setName("test2");
+			int result = dao.insert(bean);
+			System.out.println(result);
+			
 			
 			//delete
 //			boolean delete=dao.delete(6);
@@ -67,8 +66,8 @@ public class boardCategoriesDAO {
 	}
 
 	public int insert(boardCategories bean) {
-		boardCategories temp = (boardCategories) this.getSession().get(boardCategories.class, bean.getCategoryId());
-		if (temp == null) {
+//		boardCategories temp = (boardCategories) this.getSession().get(boardCategories.class, bean.getCategoryId());
+		if (bean != null) {
 			this.getSession().save(bean);
 			return 1;
 		}
@@ -77,7 +76,7 @@ public class boardCategoriesDAO {
 
 	public int update( String name, java.util.Date dateCreated,int CategoryId) {
 		boardCategories result = (boardCategories) this.getSession().get(boardCategories.class, CategoryId);
-		if(result != null){
+		if(result == null){
 			result.setName(name);
 			result.setDateCreated(dateCreated);
 			return 1;
