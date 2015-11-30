@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class threads {
@@ -14,11 +16,14 @@ public class threads {
 	private String thContent;
 	private Integer hit;
 	private Integer replayCount;
+	@Temporal(TemporalType.TIMESTAMP)
 	private java.util.Date dateLastReplied;
 	private char isReadonly;
 	private char topped;
 	@ManyToOne
-	@JoinColumn(name = "boardId")
+	@JoinColumn(name = "boardId" ,referencedColumnName = "boardId")
 	private Integer boardId;
+	@ManyToOne
+	@JoinColumn(name = "userId")
 	private Integer userId;
 }

@@ -16,6 +16,7 @@ public class replies {
 	@ManyToOne
 	@JoinColumn(name = "threadId")
 	private Integer threadId;
-
+	@ManyToOne
+	@JoinColumn(name = "fPictureId")
 	private Integer fPictureId;
 }
